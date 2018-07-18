@@ -2,18 +2,60 @@ require('sinatra')
 require('sinatra/contrib/all')
 require_relative('models/student')
 require_relative('models/house')
+
 also_reload('./models/*')
 
-# index
+# HOME
+get '/' do
+  @houses = House.all()
+  erb( :home )
+end
 
-# show
+# INDEX
+get '/students' do
+  @students = Student.all()
+  erb( :index )
+end
 
-# new
+# NEW
+get '/students/new' do
+  @students = Student.new( params )
+  @houses = House.all()
+  erb( :new )
+end
 
-# create
+# SHOW
+get '/students/:id' do
+  @student = Student.find( params['id'] )
+  erb( :show )
+end
 
-# edit
+# CREATE
+post '/students' do
+  puts params
+  @student = Student.new(params)
+  @student.save()
+  erb( :create )
+end
 
-# update
+# EDIT
+get '/students/:id/edit' do
+  @student = Student.find(params['id'])
+  @houses = House.all()
+  erb( :edit )
+end
 
-# destroy
+# UPDATE
+post '/students/:id' do
+  p params
+  student = Student.new( params )
+  student.update()
+  redirect to "students/" + params['id']
+end
+
+# DESTROY
+post '/students/:id/delete' do
+  @student = Student.find( params['id'] )
+  @student.delete()
+  redirect to "students"
+end

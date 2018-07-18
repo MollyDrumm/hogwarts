@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>All the Hogwarts Students</title>
+  </head>
+  <body>
+
+    <p>All of the Hogwarts Students</p>
+
+    <% for student in @students %>
+    <p>Full name: <%= student.format_name() %></p>
+    <p>House: <%= student.house.name().capitalize %></p>
+    <p>Age: <%= student.age() %></p>
+    <p> <a href="/students/<%=student.id%>"> Show Details </a> </p>
+    <% end%>
+
+    <p>If you would like to submit an application for a new student see link below</p>
+
+    <p> <a href="/students/new"> Form for new student </a> </p>
+
+  </body>
+</html>

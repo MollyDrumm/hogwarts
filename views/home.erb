@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Welcome to Hogwarts</title>
+  </head>
+  <body>
+
+    <p>Welcome to Hogwarts!</p>
+
+    <p>Welcome to Hogwarts, school of witchcraft and wizardry, our houses are named after our founders they are:
+    <% for house in @houses %>
+    <p><%= house.name().capitalize %></p>
+    <% end%>
+
+    <p>If you would like to see information about all of our students, see the link below</p>
+
+    <p> <a href="/students"> Show details of all students </a> </p>
+
+
+  </body>
+</html>

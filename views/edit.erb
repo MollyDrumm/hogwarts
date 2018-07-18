@@ -1,0 +1,26 @@
+<p>Edit Student Form</p>
+<p>The sorting hat strikes again you must update student details!</p>
+
+<form class="" action="/students/<%= @student.id %>" method="post">
+  <label for="first-name">First Name:</label>
+    <input id="first-name" value="<%= @student.first_name%>" type="text" name="first_name" />
+  </br>
+
+  <label for="last-name">Last Name:</label>
+    <input id="last-name" value="<%= @student.last_name%>" type="text" name="last_name">
+  </br>
+
+  <label for="house-select">Select a house:</label>
+    <select id="house-select" name="house_id">
+      <% for house in @houses %>
+        <option value="<%=house.id()%>" <%= 'selected' if house.name() == house %> ><%=house.name()%></option>
+      <% end %>
+    </select>
+  </br>
+
+  <label for="age">Age:</label>
+    <input id="age" type="number" name="age" value="<%= @student.age%>"/>
+  </br>
+
+  <input type='submit' value="Update student information"/>
+</form>
